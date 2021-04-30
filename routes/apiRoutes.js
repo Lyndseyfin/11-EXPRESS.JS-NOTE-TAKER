@@ -1,41 +1,36 @@
 const fs = require("fs");
 const path = require("path");
-const uuid = require("uuid");
+const uuidv4 = require("uuid/v4");
 
 
 // ROUTING
 module.exports = (app) => {
-    //saves notes + joins db.json
-    app.get('/api/notes', (req, res) => {
-    fs.readFile(path.join(__dirname, './db/db.json'))
-    }};
-
-  //add new notes to db.json
-    app.post('/api/notes, (req, res) => {
-      if (tableData.length < 5) {
-        tableData.push(req.body);
-        res.json(true);
-      } else {
-        waitListData.push(req.body);
-        res.json(false);
-      }
+    //sets up route
+    app.get("/api/notes", (req, res) => {
+        // Reads db.json, returns saved notes as JSON.
+        fs.readFile("./db/db.json", "utf8", (err, data) => {
+          if (err) throw err;
+          // parses the json string into a js object
+          res.json(JSON.parse(data));
+    
+  //sets up post route
+    app.post("/api/notes", (req, res) => {
+      //note added to db.json, note returned to user
+    const createNote = req.body;
+    fs.readFile("./db/db.json", "utf8", (err, data) => {
+      if (err) throw err;
+      // parses the json string into a js object
+      const notes = JSON.parse(data);
+      createNote.id = uuidv4(); //adding properties to object 
+      notes.push(newNote);
+      fs.writeFile("./db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
+        return res.json(createNote)
     });
-  
-  
-  
-    app.post('/api/notes', (req, res) => {
-      // Empty out the arrays of data
-      tableData.length = 0;
-      waitListData.length = 0;
-  
-      res.json({ ok: true });
-    });
-  };
   
   //deleting notes
   app.delete("/api/notes/:id", (req, res) => {
-    const notes = JSON.parse(fs.readFileSync("./db/db.json"));
-    const delNote = notes.filter((rmvNote) => rmvNote.id !== req.params.id);
+    const notes2 = JSON.parse(fs.readFileSync("./db/db.json"));
+    const delNote = notes2.filter((rmvNote) => rmvNote.id !== req.params.id);
     fs.writeFileSync("./db/db.json", JSON.stringify(delNote));
     res.json(delNote);
-})
+});
