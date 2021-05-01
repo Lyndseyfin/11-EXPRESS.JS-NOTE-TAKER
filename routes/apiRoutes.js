@@ -25,8 +25,8 @@ module.exports = (app) => {
       if (err) throw err;
       // parses the json string into a js object
       const notes = JSON.parse(data);
-      createNote.id = uuid; //adding properties to object 
-      notes.push(newNote);
+      createNote.id = uuid.v4(); //adding properties to object 
+      notes.push(createNote);
       fs.writeFile("./db/db.json", JSON.stringify(notes), "utf8", (err, data) => {
         return res.json(createNote)
       })
