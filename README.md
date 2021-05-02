@@ -7,16 +7,13 @@ Help organize your life with Note Taker, an application used to write, save and 
 1. [Title](Title)
 2. [Description](#description)
 3. [Installation](#installation)
-4. [Usage](#usage)
-5. [Contributing](#contribution))
-1. [Questions](#questions)
-2. [License](#demo)
-3. [Heroku](#heroku)
-4.  [Screenshot](#screenshot)
+4. [Contributing](#contribution)
+5. [Questions](#questions)
+6. [License](#demo)
+7. [Heroku](#heroku)
+8.  [Screenshot](#screenshot)
 # Installation 
 I used 'npm i' to insall all required pacakages.
-## Usage
-User will need to run an npm install and then input 'node index.js' into you their bash/terminal to generate application.
 # Contribution
 Myself
 # Questions
@@ -28,4 +25,4 @@ Myself
 ![GitHub license](https://img.shields.io/badge/license-MIT-brightgreen)
 ## Heroku
 ## Screenshot
-![screenshot]()
+![screenshot](public/assets/nt.png)
