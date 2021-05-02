@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const uuid = require('uuid');
+const uuid = require("uuid");
 
 
 // ROUTING
@@ -11,7 +11,7 @@ module.exports = (app) => {
     fs.readFile("./db/db.json", "utf8", (err, data) => {
       if (err) throw err;
       // parses the json string into a js object
-      res.json(JSON.parse(data));
+       return res.json(JSON.parse(data));
     })
   })
 
